@@ -5,6 +5,7 @@ section .data
 	len equ $-msg
 
 	nl db 0xa				; new line charachter
+	lennl equ $-nl
 
 	num1 db '499'
 	num2 db '267'
@@ -41,6 +42,12 @@ sub_num:
 	mov ebx, 1				; file descriptor (stdout)
 	mov ecx, diff 			; content to write
 	mov edx, 3 				; num of bytes to write
+	int 0x80				; call kernel
+
+	mov eax, 4				; syscall (sys_write)
+	mov ebx, 1				; file descriptor (stdout)
+	mov ecx, nl 			; content to write
+	mov edx, 1	 			; num of bytes to write
 	int 0x80				; call kernel
 
 	mov eax, 1				; syscall (sys_exit)
