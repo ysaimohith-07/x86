@@ -7,7 +7,7 @@ section .data
 	nl db 0xa				; new line charachter
 
 	num1 db '267'
-	num2 db '499'
+	num2 db '156'
 	sum db '000'
 
 section .text
@@ -43,5 +43,14 @@ add_num:
 	mov edx, 3 				; num of bytes to write
 	int 0x80				; call kernel
 
+	mov eax, 4				; syscall (sys_write)
+	mov ebx, 1				; file descriptor (stdout)
+	mov ecx, nl 			; content to write
+	mov edx, 1 			; num of bytes to write
+	int 0x80				; call kernel
+
 	mov eax, 1				; syscall (sys_exit)
 	int 0x80				; call kernel
+
+
+; nasm -g -f elf add.asm && ld -m elf_i386 -o add add.o && gdb ./add 

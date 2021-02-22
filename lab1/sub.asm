@@ -5,9 +5,8 @@ section .data
 	len equ $-msg
 
 	nl db 0xa				; new line charachter
-	lennl equ $-nl
 
-	num1 db '499'
+	num1 db '423'
 	num2 db '267'
 	diff db '000'
 
