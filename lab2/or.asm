@@ -17,3 +17,6 @@ _start:
     or eax, ebx
 
     call print
+
+    mov eax, 1
+    int 0x80

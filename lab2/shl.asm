@@ -15,3 +15,6 @@ _start:
     shl eax, 1
 
     call print
+
+    mov eax, 1
+    int 0x80
