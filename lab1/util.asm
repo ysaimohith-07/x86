@@ -1,14 +1,4 @@
-section .data
-    strResult db '000000'
-    num db 131
-    msg db "hellow rodl"
-    len equ $ - msg
-
-section .text
-    global _start
-
-_start:
-    mov eax, num
+print:
     mov ecx, 10
     xor bx, bx      ; digit counter
 
@@ -20,27 +10,32 @@ divide:
     test eax, eax   ; is eax 0
     jnz divide      ; no, continue
 
+    ;; length adjust
+    xor eax, eax
+    mov ax, rlen
+    sub ax, bx
+
     ;; eax is now zero
     mov cx, bx      ; bx is num if digits
-    lea si, [strResult] ; ds:si points to string buffer
+    mov esi, eax       ; ds:si points to string buffer
 
 next_digit:
     pop ax
     add al, '0'
-    mov [si], al
-    inc si
+    mov [strResult+esi], al
+    inc esi
     loop next_digit
 
     mov eax, 4
     mov ebx, 1
-    mov ecx, msg
-    mov edx, len
+    mov ecx, strResult
+    mov edx, rlen
     int 0x80
 
     mov eax, 4
     mov ebx, 1
-    mov ecx, strResult
-    mov edx, 6
+    mov ecx, nl
+    mov edx, 1
     int 0x80
 
     mov eax, 1

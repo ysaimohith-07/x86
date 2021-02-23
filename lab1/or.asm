@@ -4,8 +4,8 @@ section .data
     rlen equ $ - strResult
     nl db 0xa
     len1 equ $ - nl
-    num1 dq 999
-    num2 dq 999
+    num1 dq 123
+    num2 dq 143
 
 
 section .text
@@ -14,6 +14,6 @@ section .text
 _start:
     mov eax, [num1]
     mov ebx, [num2]
-    add eax, ebx
+    or eax, ebx
 
     call print
