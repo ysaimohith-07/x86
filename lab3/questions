@@ -1,0 +1,8 @@
+Q1) Choose five numbers between 100 and 999. Write ALP by using conditional instructions for finding the largest
+of these five numbers and display the result as the output.
+Q2) Choose a random number 20 ≤ R ≤ 100, write ALP by using loops for printing the numbers (i.e. from 1 to
+R) and display the result as the output.
+Q3) Write ALP by using recursion for finding a factorial of number between 5 and 30 and display the result as the
+output.
+Q4) Choose a positive value 5 ≤ P ≤ 20, write ALP by defining a P-element array containing P random values
+and do the sum of these values in the array and display the result as the output.
