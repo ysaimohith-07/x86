@@ -11,16 +11,17 @@ section .text
 
 _start:
 loop:
-	mov eax, [num]
+	mov eax, [num]	; print the number
 	call print
-	
-	mov eax, [num]
-	dec eax
-	mov [num], eax
 
-	test eax, eax
-	jne loop
+	mov eax, [num] 	; store the number in eax
+	dec eax			; decrement the number
+	mov [num], eax	; mov the number back into num
 
+	test eax, eax	
+	jne loop 		; if eax != 0 loop
+
+	; gracefull exit
 	mov eax, 1
 	mov ebx, 0
 	int 0x80
