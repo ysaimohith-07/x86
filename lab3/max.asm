@@ -6,7 +6,7 @@ section .data
 	num1 dd 143
 	num2 dd 193
 	num3 dd 873
-	num4 dd 999
+	num4 dd 99
 	num5 dd 444
 
 	msg db "The max of 5 is: "

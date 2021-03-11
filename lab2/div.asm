@@ -6,8 +6,8 @@ section .data
     mlen2 equ $ - msg2
     strResult db '000000'
     rlen equ $ - strResult
-    num1 dq 522
-    num2 dq 134
+    num1 dq 241
+    num2 dq 120
     nl db 0xa
     quo dq 0
     rem dq 0
@@ -23,6 +23,7 @@ _start:
     mov edx, mlen1
     int 0x80
 
+    xor edx, edx
     mov eax, [num1]
     mov bx, [num2]
     div bx

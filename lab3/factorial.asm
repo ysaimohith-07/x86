@@ -5,7 +5,7 @@
 section .data
 	msg db "Factorial of given number is: "
 	mlen equ $ - msg
-	num db 13
+	num db 10
 
 section .bss
 	fact resb 4

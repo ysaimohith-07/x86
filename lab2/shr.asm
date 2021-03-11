@@ -5,7 +5,6 @@ section .data
     strResult db '000000'
     rlen equ $ - strResult
     num1 dq 522
-    num2 dq 134
     nl db 0xa
 
 section .text
@@ -19,7 +18,7 @@ _start:
     int 0x80
 
     mov eax, [num1]
-    shr eax, 1
+    shr eax, 3
 
     call print
     
