@@ -21,6 +21,9 @@ section .data
     msg4 db "consonants: "
     len4 equ $-msg4
 
+    newline db 0xa, 0xc
+    linelen equ $-newline
+
     string db "assembly codes are too big"
     len equ $-string
 
@@ -32,28 +35,21 @@ section .data
 section .text
 	global _start
 
-process_space:
-	inc edx
-	dec ecx
-	inc esi
-
-inc_words:
-	inc edx
-	ret
-
-inc_vowels:
-	inc ebx
-
 _start:
 	mov ecx, len 	; charachters (non-space)
 	mov ebx, 0		; vowel
 	mov edx, 0		; words
 	mov esi, 0		; consonants
 
-compute:
-	mov eax, [string+esi]
+process_space:
+	inc edx
+	dec ecx
+	inc esi
 
-	cmp eax, ' '
+compute:
+	mov al, [string+esi]
+
+	cmp al, ' '
 	je process_space
 
 	cmp al, 'a'
@@ -67,12 +63,13 @@ compute:
 	cmp al, 'u'
 	je vowel
 
-	jmp consonants
+	jmp not_vowel
 
 	vowel:
-		call inc_vowels
+		inc ebx
 
-	inc esi
+	not_vowel:
+		inc esi
 
 	loop compute
 
@@ -86,7 +83,7 @@ compute:
 	mov [consonants], ecx
 
 	; get number of words
-	call inc_words 	; process the last word
+	inc edx 	; process the last word
 	mov [words], edx
 
 	; get number of charachters (non-space)
@@ -98,20 +95,25 @@ compute:
 	write_string msg1, len1
 	mov eax, [words]
 	call print_int
+	write_string newline, linelen
 
 	write_string msg2, len2
 	mov eax, [chars]
 	call print_int
+	write_string newline, linelen
 
 	write_string msg3, len3
 	mov eax, [vowels]
 	call print_int
+	write_string newline, linelen
 
 	write_string msg4, len4
 	mov eax, [consonants]
 	call print_int
+	write_string newline, linelen
 
 exit:
 	mov eax, 1
 	mov ebx, 0
 	int 0x80
+
