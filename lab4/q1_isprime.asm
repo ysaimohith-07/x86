@@ -34,19 +34,19 @@ div_loop:
 
 verdict_not_prime:
 	mov eax, 4
-    mov ebx, 1
-    mov ecx, msg2
-    mov edx, len2
-    int 0x80
-    jmp exit
+    	mov ebx, 1
+    	mov ecx, msg2
+   	mov edx, len2
+    	int 0x80
+    	jmp exit
 
 verdict_prime:
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg1
-    mov edx, len1
-    int 0x80
-    jmp exit
+    	mov eax, 4
+    	mov ebx, 1
+    	mov ecx, msg1
+    	mov edx, len1
+    	int 0x80
+    	jmp exit
 
 exit:
 	mov eax, 1
