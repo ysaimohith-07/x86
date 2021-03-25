@@ -3,7 +3,7 @@
 %include "util.asm"
 
 section .data
-	msg1 db "The given number is prime!", 0xa, 0xa, 0xd
+	msg1 db "The given number is prime!", 0xa, 0xd
 	len1 equ $ - msg1
 
 	msg2 db "The given number is not prime", 0xa, 0xd
